@@ -8,6 +8,10 @@ namespace Server;
 public static class Worker
 {
     private static readonly ConcurrentDictionary<Guid, WebSocket> clients = new();
+    public static IEnumerable<KeyValuePair<Guid, WebSocket>> GetClients()
+    {
+        return clients.ToList();
+    }
     public static HttpListener InitServer()
     {
         //primeiramente abrirmos um server HTTP para receber as requisições
